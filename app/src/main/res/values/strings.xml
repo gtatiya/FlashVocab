@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">FlashVocab</string>
+
+    <string name="studyvocabulary">Study Vocabulary</string>
+    <string name="cardbrowser">Card Browser</string>
+    <string name="action_settings">Settings</string>
+</resources>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="185dp"
+                    android:id="@+id/img_splash"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:gravity="center"
+                    android:textColor="#fff"
+                    android:layout_margin="10dp"
+                    android:background="#005266"
+                    android:text="Welcome to FlashVocab"/>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_margin="10dp"
+                    android:background="#005266"
+                    android:gravity="center"
+                    android:text="@string/studyvocabulary"/>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_margin="10dp"
+                    android:background="#005266"
+                    android:gravity="center"
+                    android:text="@string/cardbrowser"/>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_margin="10dp"
+                    android:background="#005266"
+                    android:gravity="center"
+                    android:text= "@string/action_settings"/>
+
+
+            </LinearLayout>
+
+
+</RelativeLayout>
