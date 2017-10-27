@@ -28,7 +28,8 @@
                     android:layout_margin="10dp"
                     android:background="#005266"
                     android:gravity="center"
-                    android:text="@string/studyvocabulary"/>
+                    android:text="@string/studyvocabulary"
+                    android:id="@+id/bStudyVocab"/>
 
                 <Button
                     android:layout_width="match_parent"
