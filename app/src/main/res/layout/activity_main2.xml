@@ -18,9 +18,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:textColor="#87CEFA"
-            android:text="Word: "/>
+            android:text="@string/Word"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -28,7 +28,7 @@
             android:id="@+id/tvWord"
             android:fontFamily="Tahoma"
             android:textColor="#000000"
-            android:text=".........."/>
+            android:text="@string/dots"/>
 
     </LinearLayout>
 
@@ -41,9 +41,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:textColor="#87CEFA"
-            android:text="POS: "/>
+            android:text="@string/POS"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -51,7 +51,7 @@
             android:id="@+id/tvPOS"
             android:fontFamily="Tahoma"
             android:textColor="#000000"
-            android:text=".........."/>
+            android:text="@string/dots"/>
 
     </LinearLayout>
 
@@ -64,9 +64,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:textColor="#87CEFA"
-            android:text="Meaning: "/>
+            android:text="@string/Meaning"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -74,7 +74,7 @@
             android:id="@+id/tvMeaning"
             android:fontFamily="Tahoma"
             android:textColor="#000000"
-            android:text=".........."/>
+            android:text="@string/dots"/>
 
     </LinearLayout>
 
@@ -87,9 +87,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:textColor="#87CEFA"
-            android:text="Example: "/>
+            android:text="@string/Example"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -97,7 +97,7 @@
             android:id="@+id/tvExample"
             android:fontFamily="Tahoma"
             android:textColor="#000000"
-            android:text=".........."/>
+            android:text="@string/dots"/>
 
     </LinearLayout>
 
@@ -110,6 +110,7 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="185dp"
+            android:contentDescription="@null"
             android:id="@+id/ivPic"/>
 
     </LinearLayout>
@@ -123,9 +124,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:textColor="#87CEFA"
-            android:text="Synonym: "/>
+            android:text="@string/Synonym"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -133,7 +134,7 @@
             android:id="@+id/tvSynonym"
             android:fontFamily="Tahoma"
             android:textColor="#000000"
-            android:text=".........."/>
+            android:text="@string/dots"/>
 
     </LinearLayout>
 
@@ -146,9 +147,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:textColor="#87CEFA"
-            android:text="Antonym: "/>
+            android:text="@string/Antonym"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -156,7 +157,7 @@
             android:id="@+id/tvAntonym"
             android:fontFamily="Tahoma"
             android:textColor="#000000"
-            android:text=".........."/>
+            android:text="@string/dots"/>
 
     </LinearLayout>
 
@@ -167,7 +168,7 @@
         android:layout_margin="10dp"
         android:background="#005266"
         android:gravity="center"
-        android:text="Next Card"
+        android:text="@string/NextCard"
         android:id="@+id/bNextCard"/>
 
 </LinearLayout>

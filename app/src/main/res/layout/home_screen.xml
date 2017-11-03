@@ -6,9 +6,12 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true">
                 <ImageView
                     android:layout_width="match_parent"
+                    android:contentDescription="@null"
                     android:layout_height="185dp"
                     android:id="@+id/img_splash"/>
 
@@ -19,7 +22,7 @@
                     android:textColor="#fff"
                     android:layout_margin="10dp"
                     android:background="#005266"
-                    android:text="Welcome to FlashVocab"/>
+                    android:text="@string/Welcome2FlashVocab"/>
 
                 <Button
                     android:layout_width="match_parent"
@@ -30,6 +33,14 @@
                     android:gravity="center"
                     android:text="@string/studyvocabulary"
                     android:id="@+id/bStudyVocab"/>
+
+                <Button
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="Force Crash!"
+                    android:onClick="forceCrash"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true" />
 
                 <Button
                     android:layout_width="match_parent"

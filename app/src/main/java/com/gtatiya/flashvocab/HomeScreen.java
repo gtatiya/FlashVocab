@@ -9,10 +9,13 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.crashlytics.android.Crashlytics;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+
+import io.fabric.sdk.android.Fabric;
 
 /**
  * Created by Gyan Tatiya on 3/Oct/17.
@@ -26,6 +29,7 @@ public class HomeScreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Fabric.with(this, new Crashlytics());
         setContentView(R.layout.home_screen);
         imageView= (ImageView) findViewById(R.id.img_splash);
 
@@ -57,6 +61,11 @@ public class HomeScreen extends AppCompatActivity {
         });
 
     }
+
+    public void forceCrash(View view) {
+        throw new RuntimeException("This is a crash");
+    }
+
 
     public void text2SQLite() {
         String data = "";
