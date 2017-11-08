@@ -1,0 +1,67 @@
+:Monkey: seed=1509896561267 count=200
+:AllowPackage: com.gtatiya.flashvocab
+:IncludeCategory: android.intent.category.LAUNCHER
+:IncludeCategory: android.intent.category.MONKEY
+// Selecting main activities from category android.intent.category.LAUNCHER
+//   + Using main activity com.gtatiya.flashvocab.HomeScreen (from package com.gtatiya.flashvocab)
+// Selecting main activities from category android.intent.category.MONKEY
+// Seeded: 1509896561267
+// Event percentages:
+//   0: 80.0%
+//   1: 0.0%
+//   2: 0.0%
+//   3: 0.0%
+//   4: -0.0%
+//   5: -0.0%
+//   6: 0.0%
+//   7: 0.0%
+//   8: 0.0%
+//   9: 0.0%
+//   10: 0.0%
+//   11: 20.0%
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10200000;component=com.gtatiya.flashvocab/.HomeScreen;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=com.gtatiya.flashvocab/.HomeScreen } in package com.gtatiya.flashvocab
+Sleeping for 1000 milliseconds
+:Sending Touch (ACTION_DOWN): 0:(186.0,752.0)
+:Sending Touch (ACTION_UP): 0:(181.52875,734.61096)
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 33    // KEYCODE_E
+:Sending Key (ACTION_UP): 33    // KEYCODE_E
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 29    // KEYCODE_A
+:Sending Key (ACTION_UP): 29    // KEYCODE_A
+Sleeping for 1000 milliseconds
+:Sending Touch (ACTION_DOWN): 0:(283.0,1114.0)
+:Sending Touch (ACTION_UP): 0:(297.18677,1113.0712)
+Sleeping for 1000 milliseconds
+// CRASH: com.gtatiya.flashvocab (pid 3604)
+// Short Msg: java.lang.RuntimeException
+// Long Msg: java.lang.RuntimeException: This is a crash
+// Build Label: Android/sdk_google_phone_x86_64/generic_x86_64:6.0/MASTER/4212456:userdebug/test-keys
+// Build Changelist: 4212456
+// Build Time: 1500967002000
+// java.lang.IllegalStateException: Could not execute method for android:onClick
+// 	at android.support.v7.app.AppCompatViewInflater$DeclaredOnClickListener.onClick(AppCompatViewInflater.java:293)
+// 	at android.view.View.performClick(View.java:5198)
+// 	at android.view.View$PerformClick.run(View.java:21147)
+// 	at android.os.Handler.handleCallback(Handler.java:739)
+// 	at android.os.Handler.dispatchMessage(Handler.java:95)
+// 	at android.os.Looper.loop(Looper.java:148)
+// 	at android.app.ActivityThread.main(ActivityThread.java:5417)
+// 	at java.lang.reflect.Method.invoke(Native Method)
+// 	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:726)
+// 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:616)
+// Caused by: java.lang.reflect.InvocationTargetException
+// 	at java.lang.reflect.Method.invoke(Native Method)
+// 	at android.support.v7.app.AppCompatViewInflater$DeclaredOnClickListener.onClick(AppCompatViewInflater.java:288)
+// 	... 9 more
+// Caused by: java.lang.RuntimeException: This is a crash
+// 	at com.gtatiya.flashvocab.HomeScreen.forceCrash(HomeScreen.java:66)
+// 	... 11 more
+// 
+** Monkey aborted due to error.
+Events injected: 9
+:Sending rotation degree=0, persist=false
+:Dropped: keys=0 pointers=0 trackballs=0 flips=0 rotations=0
+## Network stats: elapsed time=5929ms (0ms mobile, 0ms wifi, 5929ms not connected)
+** System appears to have crashed at event 9 of 200 using seed 1509896561267

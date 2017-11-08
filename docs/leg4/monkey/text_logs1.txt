@@ -1,0 +1,336 @@
+:Monkey: seed=1509896242939 count=200
+:AllowPackage: com.gtatiya.flashvocab
+:IncludeCategory: android.intent.category.LAUNCHER
+:IncludeCategory: android.intent.category.MONKEY
+// Selecting main activities from category android.intent.category.LAUNCHER
+//   + Using main activity com.gtatiya.flashvocab.HomeScreen (from package com.gtatiya.flashvocab)
+// Selecting main activities from category android.intent.category.MONKEY
+// Seeded: 1509896242939
+// Event percentages:
+//   0: 20.0%
+//   1: 0.0%
+//   2: 0.0%
+//   3: 0.0%
+//   4: -0.0%
+//   5: -0.0%
+//   6: 0.0%
+//   7: 0.0%
+//   8: 0.0%
+//   9: 0.0%
+//   10: 0.0%
+//   11: 80.0%
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10200000;component=com.gtatiya.flashvocab/.HomeScreen;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=com.gtatiya.flashvocab/.HomeScreen } in package com.gtatiya.flashvocab
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 206    // KEYCODE_3D_MODE
+:Sending Key (ACTION_UP): 206    // KEYCODE_3D_MODE
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 111    // KEYCODE_ESCAPE
+:Sending Key (ACTION_UP): 111    // KEYCODE_ESCAPE
+Sleeping for 1000 milliseconds
+    // activityResuming(com.gtatiya.flashvocab)
+:Sending Key (ACTION_DOWN): 237    // KEYCODE_TV_SATELLITE
+:Sending Key (ACTION_UP): 237    // KEYCODE_TV_SATELLITE
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 171    // KEYCODE_WINDOW
+:Sending Key (ACTION_UP): 171    // KEYCODE_WINDOW
+Sleeping for 1000 milliseconds
+:Sending Touch (ACTION_DOWN): 0:(257.0,539.0)
+:Sending Touch (ACTION_UP): 0:(236.27087,536.6405)
+Sleeping for 1000 milliseconds
+:Sending Touch (ACTION_DOWN): 0:(371.0,1214.0)
+:Sending Touch (ACTION_UP): 0:(383.61093,1216.0238)
+Sleeping for 1000 milliseconds
+:Sending Touch (ACTION_DOWN): 0:(51.0,1367.0)
+:Sending Touch (ACTION_UP): 0:(70.22888,1378.1525)
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 154    // KEYCODE_NUMPAD_DIVIDE
+:Sending Key (ACTION_UP): 154    // KEYCODE_NUMPAD_DIVIDE
+Sleeping for 1000 milliseconds
+:Sending Touch (ACTION_DOWN): 0:(721.0,73.0)
+:Sending Touch (ACTION_UP): 0:(722.73834,68.555855)
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 143    // KEYCODE_NUM_LOCK
+:Sending Key (ACTION_UP): 143    // KEYCODE_NUM_LOCK
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 200    // KEYCODE_BUTTON_13
+:Sending Key (ACTION_UP): 200    // KEYCODE_BUTTON_13
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 8    // KEYCODE_1
+:Sending Key (ACTION_UP): 8    // KEYCODE_1
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 209    // KEYCODE_MUSIC
+    // Rejecting start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=com.android.music/.MusicBrowserActivity } in package com.android.music
+:Sending Key (ACTION_UP): 209    // KEYCODE_MUSIC
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 215    // KEYCODE_KATAKANA_HIRAGANA
+:Sending Key (ACTION_UP): 215    // KEYCODE_KATAKANA_HIRAGANA
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 130    // KEYCODE_MEDIA_RECORD
+:Sending Key (ACTION_UP): 130    // KEYCODE_MEDIA_RECORD
+Sleeping for 1000 milliseconds
+:Sending Touch (ACTION_DOWN): 0:(460.0,720.0)
+:Sending Touch (ACTION_UP): 0:(467.27087,720.21497)
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 140    // KEYCODE_F10
+:Sending Key (ACTION_UP): 140    // KEYCODE_F10
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 34    // KEYCODE_F
+:Sending Key (ACTION_UP): 34    // KEYCODE_F
+Sleeping for 1000 milliseconds
+:Sending Touch (ACTION_DOWN): 0:(789.0,1122.0)
+:Sending Touch (ACTION_UP): 0:(788.3196,1128.4698)
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 2    // KEYCODE_SOFT_RIGHT
+:Sending Key (ACTION_UP): 2    // KEYCODE_SOFT_RIGHT
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 246    // KEYCODE_TV_INPUT_HDMI_4
+:Sending Key (ACTION_UP): 246    // KEYCODE_TV_INPUT_HDMI_4
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 165    // KEYCODE_INFO
+:Sending Key (ACTION_UP): 165    // KEYCODE_INFO
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 201    // KEYCODE_BUTTON_14
+:Sending Key (ACTION_UP): 201    // KEYCODE_BUTTON_14
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 58    // KEYCODE_ALT_RIGHT
+:Sending Key (ACTION_UP): 58    // KEYCODE_ALT_RIGHT
+Sleeping for 1000 milliseconds
+:Sending Touch (ACTION_DOWN): 0:(281.0,906.0)
+:Sending Touch (ACTION_UP): 0:(276.32578,906.9571)
+Sleeping for 1000 milliseconds
+:Sending Touch (ACTION_DOWN): 0:(66.0,1557.0)
+:Sending Touch (ACTION_UP): 0:(65.608376,1550.1287)
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 265    // KEYCODE_MEDIA_SKIP_BACKWARD
+:Sending Key (ACTION_UP): 265    // KEYCODE_MEDIA_SKIP_BACKWARD
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 20    // KEYCODE_DPAD_DOWN
+:Sending Key (ACTION_UP): 20    // KEYCODE_DPAD_DOWN
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 12    // KEYCODE_5
+:Sending Key (ACTION_UP): 12    // KEYCODE_5
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 22    // KEYCODE_DPAD_RIGHT
+:Sending Key (ACTION_UP): 22    // KEYCODE_DPAD_RIGHT
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 158    // KEYCODE_NUMPAD_DOT
+:Sending Key (ACTION_UP): 158    // KEYCODE_NUMPAD_DOT
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 229    // KEYCODE_LAST_CHANNEL
+:Sending Key (ACTION_UP): 229    // KEYCODE_LAST_CHANNEL
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 63    // KEYCODE_SYM
+:Sending Key (ACTION_UP): 63    // KEYCODE_SYM
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 161    // KEYCODE_NUMPAD_EQUALS
+:Sending Key (ACTION_UP): 161    // KEYCODE_NUMPAD_EQUALS
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 19    // KEYCODE_DPAD_UP
+:Sending Key (ACTION_UP): 19    // KEYCODE_DPAD_UP
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 86    // KEYCODE_MEDIA_STOP
+:Sending Key (ACTION_UP): 86    // KEYCODE_MEDIA_STOP
+Sleeping for 1000 milliseconds
+:Sending Touch (ACTION_DOWN): 0:(674.0,1474.0)
+:Sending Touch (ACTION_UP): 0:(671.9268,1477.8092)
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 105    // KEYCODE_BUTTON_R2
+:Sending Key (ACTION_UP): 105    // KEYCODE_BUTTON_R2
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 188    // KEYCODE_BUTTON_1
+:Sending Key (ACTION_UP): 188    // KEYCODE_BUTTON_1
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 273    // 273
+:Sending Key (ACTION_UP): 273    // 273
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 242    // KEYCODE_TV_ANTENNA_CABLE
+:Sending Key (ACTION_UP): 242    // KEYCODE_TV_ANTENNA_CABLE
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 2    // KEYCODE_SOFT_RIGHT
+:Sending Key (ACTION_UP): 2    // KEYCODE_SOFT_RIGHT
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 88    // KEYCODE_MEDIA_PREVIOUS
+:Sending Key (ACTION_UP): 88    // KEYCODE_MEDIA_PREVIOUS
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 20    // KEYCODE_DPAD_DOWN
+:Sending Key (ACTION_UP): 20    // KEYCODE_DPAD_DOWN
+Sleeping for 1000 milliseconds
+:Sending Touch (ACTION_DOWN): 0:(412.0,1174.0)
+:Sending Touch (ACTION_UP): 0:(403.51938,1178.7274)
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 1    // KEYCODE_SOFT_LEFT
+:Sending Key (ACTION_UP): 1    // KEYCODE_SOFT_LEFT
+Sleeping for 1000 milliseconds
+:Sending Touch (ACTION_DOWN): 0:(706.0,611.0)
+:Sending Touch (ACTION_UP): 0:(705.8998,618.48444)
+Sleeping for 1000 milliseconds
+:Sending Touch (ACTION_DOWN): 0:(149.0,1761.0)
+:Sending Touch (ACTION_UP): 0:(149.61127,1763.7457)
+Sleeping for 1000 milliseconds
+    // Allowing start of Intent { cmp=com.gtatiya.flashvocab/.HomeScreen } in package com.gtatiya.flashvocab
+:Sending Key (ACTION_DOWN): 146    // KEYCODE_NUMPAD_2
+:Sending Key (ACTION_UP): 146    // KEYCODE_NUMPAD_2
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 103    // KEYCODE_BUTTON_R1
+    //[calendar_time:2017-11-04 16:59:06.676  system_uptime:976056]
+    // Sending event #100
+:Sending Key (ACTION_UP): 103    // KEYCODE_BUTTON_R1
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 205    // KEYCODE_MANNER_MODE
+:Sending Key (ACTION_UP): 205    // KEYCODE_MANNER_MODE
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 238    // KEYCODE_TV_SATELLITE_BS
+:Sending Key (ACTION_UP): 238    // KEYCODE_TV_SATELLITE_BS
+Sleeping for 1000 milliseconds
+:Sending Touch (ACTION_DOWN): 0:(240.0,1011.0)
+:Sending Touch (ACTION_UP): 0:(251.21863,1003.0117)
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 208    // KEYCODE_CALENDAR
+    // Rejecting start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=com.android.calendar/.AllInOneActivity } in package com.android.calendar
+:Sending Key (ACTION_UP): 208    // KEYCODE_CALENDAR
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 101    // KEYCODE_BUTTON_Z
+:Sending Key (ACTION_UP): 101    // KEYCODE_BUTTON_Z
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 144    // KEYCODE_NUMPAD_0
+:Sending Key (ACTION_UP): 144    // KEYCODE_NUMPAD_0
+Sleeping for 1000 milliseconds
+:Sending Touch (ACTION_DOWN): 0:(1068.0,1751.0)
+:Sending Touch (ACTION_UP): 0:(1064.1001,1753.0321)
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 210    // KEYCODE_CALCULATOR
+:Sending Key (ACTION_UP): 210    // KEYCODE_CALCULATOR
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 62    // KEYCODE_SPACE
+:Sending Key (ACTION_UP): 62    // KEYCODE_SPACE
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 103    // KEYCODE_BUTTON_R1
+:Sending Key (ACTION_UP): 103    // KEYCODE_BUTTON_R1
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 124    // KEYCODE_INSERT
+:Sending Key (ACTION_UP): 124    // KEYCODE_INSERT
+Sleeping for 1000 milliseconds
+:Sending Touch (ACTION_DOWN): 0:(627.0,1160.0)
+:Sending Touch (ACTION_UP): 0:(624.0591,1142.3207)
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 179    // KEYCODE_STB_POWER
+:Sending Key (ACTION_UP): 179    // KEYCODE_STB_POWER
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 63    // KEYCODE_SYM
+:Sending Key (ACTION_UP): 63    // KEYCODE_SYM
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 151    // KEYCODE_NUMPAD_7
+:Sending Key (ACTION_UP): 151    // KEYCODE_NUMPAD_7
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 146    // KEYCODE_NUMPAD_2
+:Sending Key (ACTION_UP): 146    // KEYCODE_NUMPAD_2
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 152    // KEYCODE_NUMPAD_8
+:Sending Key (ACTION_UP): 152    // KEYCODE_NUMPAD_8
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 205    // KEYCODE_MANNER_MODE
+:Sending Key (ACTION_UP): 205    // KEYCODE_MANNER_MODE
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 256    // KEYCODE_TV_CONTENTS_MENU
+:Sending Key (ACTION_UP): 256    // KEYCODE_TV_CONTENTS_MENU
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 115    // KEYCODE_CAPS_LOCK
+:Sending Key (ACTION_UP): 115    // KEYCODE_CAPS_LOCK
+Sleeping for 1000 milliseconds
+:Sending Touch (ACTION_DOWN): 0:(381.0,237.0)
+:Sending Touch (ACTION_UP): 0:(367.492,222.04991)
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 137    // KEYCODE_F7
+:Sending Key (ACTION_UP): 137    // KEYCODE_F7
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 111    // KEYCODE_ESCAPE
+:Sending Key (ACTION_UP): 111    // KEYCODE_ESCAPE
+Sleeping for 1000 milliseconds
+    // activityResuming(com.gtatiya.flashvocab)
+:Sending Touch (ACTION_DOWN): 0:(196.0,406.0)
+:Sending Touch (ACTION_UP): 0:(195.82158,410.2042)
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 174    // KEYCODE_BOOKMARK
+:Sending Key (ACTION_UP): 174    // KEYCODE_BOOKMARK
+Sleeping for 1000 milliseconds
+:Sending Touch (ACTION_DOWN): 0:(371.0,1788.0)
+:Sending Touch (ACTION_UP): 0:(366.4053,1788.5012)
+Sleeping for 1000 milliseconds
+    // Allowing start of Intent { cmp=com.gtatiya.flashvocab/.HomeScreen } in package com.gtatiya.flashvocab
+:Sending Key (ACTION_DOWN): 110    // KEYCODE_BUTTON_MODE
+:Sending Key (ACTION_UP): 110    // KEYCODE_BUTTON_MODE
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 24    // KEYCODE_VOLUME_UP
+:Sending Key (ACTION_UP): 24    // KEYCODE_VOLUME_UP
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 9    // KEYCODE_2
+:Sending Key (ACTION_UP): 9    // KEYCODE_2
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 106    // KEYCODE_BUTTON_THUMBL
+:Sending Key (ACTION_UP): 106    // KEYCODE_BUTTON_THUMBL
+Sleeping for 1000 milliseconds
+    // Allowing start of Intent { cmp=com.gtatiya.flashvocab/.Main2Activity } in package com.gtatiya.flashvocab
+:Sending Key (ACTION_DOWN): 52    // KEYCODE_X
+:Sending Key (ACTION_UP): 52    // KEYCODE_X
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 93    // KEYCODE_PAGE_DOWN
+:Sending Key (ACTION_UP): 93    // KEYCODE_PAGE_DOWN
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 213    // KEYCODE_MUHENKAN
+:Sending Key (ACTION_UP): 213    // KEYCODE_MUHENKAN
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 47    // KEYCODE_S
+:Sending Key (ACTION_UP): 47    // KEYCODE_S
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 242    // KEYCODE_TV_ANTENNA_CABLE
+:Sending Key (ACTION_UP): 242    // KEYCODE_TV_ANTENNA_CABLE
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 259    // KEYCODE_HELP
+:Sending Key (ACTION_UP): 259    // KEYCODE_HELP
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 228    // KEYCODE_12
+:Sending Key (ACTION_UP): 228    // KEYCODE_12
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 248    // KEYCODE_TV_INPUT_COMPOSITE_2
+:Sending Key (ACTION_UP): 248    // KEYCODE_TV_INPUT_COMPOSITE_2
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 11    // KEYCODE_4
+:Sending Key (ACTION_UP): 11    // KEYCODE_4
+Sleeping for 1000 milliseconds
+:Sending Touch (ACTION_DOWN): 0:(1023.0,1446.0)
+:Sending Touch (ACTION_UP): 0:(1022.09467,1449.6813)
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 119    // KEYCODE_FUNCTION
+:Sending Key (ACTION_UP): 119    // KEYCODE_FUNCTION
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 11    // KEYCODE_4
+:Sending Key (ACTION_UP): 11    // KEYCODE_4
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 224    // KEYCODE_WAKEUP
+:Sending Key (ACTION_UP): 224    // KEYCODE_WAKEUP
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 161    // KEYCODE_NUMPAD_EQUALS
+:Sending Key (ACTION_UP): 161    // KEYCODE_NUMPAD_EQUALS
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 218    // KEYCODE_KANA
+:Sending Key (ACTION_UP): 218    // KEYCODE_KANA
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 230    // KEYCODE_TV_DATA_SERVICE
+:Sending Key (ACTION_UP): 230    // KEYCODE_TV_DATA_SERVICE
+Sleeping for 1000 milliseconds
+:Sending Touch (ACTION_DOWN): 0:(944.0,207.0)
+:Sending Touch (ACTION_UP): 0:(946.32526,189.40265)
+Sleeping for 1000 milliseconds
+:Sending Touch (ACTION_DOWN): 0:(304.0,1572.0)
+:Sending Touch (ACTION_UP): 0:(286.80783,1570.3612)
+Sleeping for 1000 milliseconds
+:Sending Touch (ACTION_DOWN): 0:(1071.0,338.0)
+:Sending Touch (ACTION_UP): 0:(1061.919,338.2069)
+Sleeping for 1000 milliseconds
+:Sending Key (ACTION_DOWN): 94    // KEYCODE_PICTSYMBOLS
+Events injected: 200
+:Sending rotation degree=0, persist=false
+:Dropped: keys=0 pointers=0 trackballs=0 flips=0 rotations=0
+## Network stats: elapsed time=109212ms (0ms mobile, 0ms wifi, 109212ms not connected)
+// Monkey finished
