@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/blue_gradient"
+    tools:context="com.gtatiya.flashvocab.HomeScreen">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -29,34 +32,17 @@
                     android:layout_height="55dp"
                     android:layout_marginTop="5dp"
                     android:layout_margin="10dp"
-                    android:background="#005266"
                     android:gravity="center"
                     android:text="@string/studyvocabulary"
                     android:id="@+id/bStudyVocab"/>
 
                 <Button
-                    android:layout_height="wrap_content"
-                    android:layout_width="wrap_content"
-                    android:text="Force Crash!"
-                    android:onClick="forceCrash"
-                    android:layout_centerVertical="true"
-                    android:layout_centerHorizontal="true" />
-
-                <Button
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_margin="10dp"
-                    android:background="#005266"
                     android:gravity="center"
-                    android:text="@string/cardbrowser"/>
-
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    android:layout_margin="10dp"
-                    android:background="#005266"
-                    android:gravity="center"
-                    android:text= "@string/action_settings"/>
+                    android:text= "@string/action_settings"
+                    android:id="@+id/bSettings"/>
 
 
             </LinearLayout>

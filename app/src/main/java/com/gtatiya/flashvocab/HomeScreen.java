@@ -1,16 +1,15 @@
 package com.gtatiya.flashvocab;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
-
 import com.bumptech.glide.Glide;
 import com.crashlytics.android.Crashlytics;
-
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -23,9 +22,13 @@ import io.fabric.sdk.android.Fabric;
 
 public class HomeScreen extends AppCompatActivity {
     DatabaseHelper myDB;
-    Button bStudyVocab;
-
+    Button bStudyVocab, bSettings;
     ImageView imageView;
+
+    public static int[] new_review_CardsIntArray;
+    int[] Studied_XY;
+    int[] Settings_XY;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,36 +39,121 @@ public class HomeScreen extends AppCompatActivity {
         myDB = new DatabaseHelper(this);
 
         bStudyVocab = (Button) findViewById(R.id.bStudyVocab);
+        bSettings = (Button) findViewById(R.id.bSettings);
 
-        Glide.with(this).load("https://vergecampus.com/wp-content/uploads/2015/04/flashcards.png").into(imageView);
-        //Glide.with(this).load("https://drive.google.com/uc?export=view&id=0B6uiOVPlyIu-UVVCWm5EVThtUW8").into(imageView);
-        //Glide.with(this).load("https://drive.google.com/uc?export=view&id=0B6uiOVPlyIu-OTR1VjV2VEplZGc").into(imageView);
-        //Glide.with(this).load("https://drive.google.com/uc?export=view&id=0B6uiOVPlyIu-MkdyMWE1cWd6Rlk").into(imageView);
+        //Glide.with(this).load("https://vergecampus.com/wp-content/uploads/2015/04/flashcards.png").into(imageView);
+        imageView.setImageResource(R.drawable.flashvocab_pic);
 
-        //Google Could Platform
-        //Glide.with(this).load("https://storage.googleapis.com/staging.my-first-cloud-app-gtatiya.appspot.com/FlashVocab/Age%20is%20just%20number.jpg").into(imageView);
-//        Glide.with(this).load("https://storage.googleapis.com/staging.my-first-cloud-app-gtatiya.appspot.com/FlashVocab/Age is just number.jpg").into(imageView);
-//        Glide.with(this).load("https://storage.googleapis.com/staging.my-first-cloud-app-gtatiya.appspot.com/FlashVocab/2017.10.11 HZ chat.jpg").into(imageView);
-//        Glide.with(this).load("https://storage.googleapis.com/staging.my-first-cloud-app-gtatiya.appspot.com/FlashVocab/GYan.jpg").into(imageView);
+        boolean isInserted = myDB.checkTable("VocabTable");
+        // Create VocabTable only if it does not exists
+        if (!isInserted){
+            text2SQLite();
+        }
 
-        text2SQLite();
+        isInserted = myDB.checkTable("Settings");
+        // Create Settings only if it does not exists
+        if (!isInserted){
+            myDB.createSetting();
+        }
+
+        // Create ScheduledCards Table for the first time
+        myDB.createScheduledCardsFirstTime();
+
+        // Getting Setting and no. of studied cards
+        Studied_XY = readStudied_XY();
+        Settings_XY = readSettings();
 
         bStudyVocab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (Settings_XY[0]<=Studied_XY[0] && Settings_XY[1]<=Studied_XY[1]){
+                    showMessage("Congratulations!! You are all set for the day", "Today's review limit has been reached, but you can study more cards by increasing the daily limit in the settings.");
+                }else {
+                    myDB.createScheduledCardsLater();
+                    new_review_CardsIntArray = readSequenceScoreIntArray();
+                    // If there's no cards scheduled the new_review_CardsIntArray length is 1
+                    if (new_review_CardsIntArray.length == 1){
+                        showMessage("Congratulations!! You are all set for the day", "Today's review limit has been reached, but you can study more cards by increasing the daily limit in the settings.");
+                    }else{
+                        Intent i = new Intent(HomeScreen.this, WordCard.class);
+                        startActivity(i);
+                    }
+                }
+            }
+        });
 
-                Intent i=new Intent(HomeScreen.this, Main2Activity.class);
-                //i.putExtra("platform","Android");
+        bSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i=new Intent(HomeScreen.this, Settings.class);
                 startActivity(i);
             }
         });
 
     }
 
-    public void forceCrash(View view) {
-        throw new RuntimeException("This is a crash");
+    public void showMessage(String title, String message) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setCancelable(true);
+        builder.setTitle(title);
+        builder.setMessage(message);
+        builder.show();
     }
 
+    // Reading today's scheduled cards and scores from Database
+    // Storing new and review cards in String of format "1,0,7,0,13,68,4,420"
+    // Here odd index are Card_Key and even index are its Schedule_Score
+    // Then, it converts array of string to array of int[]
+    public int[] readSequenceScoreIntArray(){
+        Cursor res = myDB.getSequenceScore();
+
+        String sequenceScore;
+        sequenceScore = "";
+        while (res.moveToNext()){
+            sequenceScore = res.getString(0);
+        }
+        String[] sequenceScoreArray = sequenceScore.split(",");
+
+        // converting array of string to array of int
+        int[] i2 = new int[sequenceScoreArray.length];
+        if (sequenceScore.equals("")){
+            return i2;
+        }else{
+            for (int i = 0; i < sequenceScoreArray.length; i++) {
+                i2[i] = Integer.parseInt(sequenceScoreArray[i]);
+            }
+            return i2;
+        }
+    }
+
+    // This function will read today's studies new and review cards
+    // Store it in array of integer xy
+    // use xy[0] to get new cards and xy[1] to get review cards
+    public int[] readStudied_XY(){
+        int[] xy = new int[2];
+        Cursor res = myDB.getStudied_XY();
+
+        while (res.moveToNext()){
+            xy[0] = res.getInt(0);
+            xy[1] = res.getInt(1);
+        }
+        return xy;
+    }
+
+    // This function will read settings: no. of new and review cards
+    // Store it in array of integer xy
+    // use xy[0] to get new cards and xy[1] to get review cards
+    public int[] readSettings(){
+        int[] xy = new int[2];
+        Cursor res = myDB.getSettings();
+
+        while (res.moveToNext()){
+            xy[0] = res.getInt(1);
+            xy[1] = res.getInt(2);
+        }
+        return xy;
+    }
 
     public void text2SQLite() {
         String data = "";
@@ -74,8 +162,6 @@ public class HomeScreen extends AppCompatActivity {
         InputStream is = this.getResources().openRawResource(R.raw.word_db);
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-
-        //List<Map<String, String>> maps = new ArrayList<Map<String, String>>();
 
         if (is != null) {
             try {
@@ -128,15 +214,8 @@ public class HomeScreen extends AppCompatActivity {
                     if (m == 0) {
                         word_no = data;
 
-                        boolean isInserted = myDB.insertData(antonym, card_key, card_type, example, meaning, pos, picture2_GCS_links, schedule_score, synonym, word, word_no);
-                        if (isInserted == true){
-                            Toast.makeText(HomeScreen.this, "Data Inserted", Toast.LENGTH_LONG).show();
-                        } else{
-                            Toast.makeText(HomeScreen.this, "Data Not Inserted", Toast.LENGTH_LONG).show();
-                        }
+                        myDB.insertData(antonym, card_key, card_type, example, meaning, pos, picture2_GCS_links, schedule_score, synonym, word, word_no);
 
-                        //Map<String, String> map = javamaps2(antonym, card_key, card_type, example, meaning, pos, picture2_GCS_links, schedule_score, synonym, word, word_no);
-                        //maps.add(map);
                     }
                     n += 1;
                 }

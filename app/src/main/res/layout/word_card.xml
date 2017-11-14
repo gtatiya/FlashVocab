@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#009900"
+    android:padding="16dp"
+    android:orientation="vertical"
+    tools:context="com.gtatiya.flashvocab.WordCard">
+
+    <ViewFlipper
+        android:id="@+id/view_flipper"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <RelativeLayout
+            android:id="@+id/child_1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/child_1_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="3dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18dp"
+                    android:textColor="#87CEFA"
+                    android:text="Word: "/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvWord"
+                    android:fontFamily="Tahoma"
+                    android:textColor="#000000"
+                    android:text=".........."/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/child_1_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="3dp"
+                android:layout_below="@+id/child_1_1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18dp"
+                    android:textColor="#87CEFA"
+                    android:text="POS: "/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvPOS"
+                    android:fontFamily="Tahoma"
+                    android:textColor="#000000"
+                    android:text=".........."/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/child_1_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="3dp"
+                android:layout_below="@+id/child_1_2">
+
+                <Button
+                    android:id="@+id/bPlay"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:background="@android:drawable/ic_media_play" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/bShowAns"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_alignParentBottom="true"
+                android:gravity="center"
+                android:text="Show Answer" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/child_2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/child_2_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="3dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18dp"
+                    android:textColor="#87CEFA"
+                    android:text="Word: "/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvWord2"
+                    android:fontFamily="Tahoma"
+                    android:textColor="#000000"
+                    android:text=".........."/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/child_2_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="3dp"
+                android:layout_below="@+id/child_2_1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18dp"
+                    android:textColor="#87CEFA"
+                    android:text="POS: "/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvPOS2"
+                    android:fontFamily="Tahoma"
+                    android:textColor="#000000"
+                    android:text=".........."/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/child_2_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="3dp"
+                android:layout_below="@+id/child_2_2">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18dp"
+                    android:textColor="#87CEFA"
+                    android:text="Meaning: "/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvMeaning"
+                    android:fontFamily="Tahoma"
+                    android:textColor="#000000"
+                    android:text=".........."/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/child_2_4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="3dp"
+                android:layout_below="@+id/child_2_3">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18dp"
+                    android:textColor="#87CEFA"
+                    android:text="Example: "/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvExample"
+                    android:fontFamily="Tahoma"
+                    android:textColor="#000000"
+                    android:text=".........."/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/child_2_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="3dp"
+                android:orientation="horizontal"
+                android:layout_below="@+id/child_2_4">
+
+
+                <ImageView
+                    android:id="@+id/imgView"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:scaleType="centerInside"/>
+
+                <!--<ImageView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="185dp"-->
+                <!--android:id="@+id/ivPic"/>-->
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/child_2_6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="3dp"
+                android:layout_below="@+id/child_2_5">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18dp"
+                    android:textColor="#87CEFA"
+                    android:text="Synonym: "/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvSynonym"
+                    android:fontFamily="Tahoma"
+                    android:textColor="#000000"
+                    android:text=".........."/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/child_2_7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="3dp"
+                android:layout_below="@+id/child_2_6">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18dp"
+                    android:textColor="#87CEFA"
+                    android:text="Antonym: "/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvAntonym"
+                    android:fontFamily="Tahoma"
+                    android:textColor="#000000"
+                    android:text=".........."/>
+
+            </LinearLayout>
+
+            <!--<Button-->
+            <!--android:id="@+id/bNextCard"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_alignParentBottom="true"-->
+            <!--android:layout_height="55dp"-->
+            <!--android:background="#005266"-->
+            <!--android:gravity="center"-->
+            <!--android:text="Next Card" />-->
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="3"
+                android:layout_alignParentBottom="true">
+
+                <Button android:id="@+id/bAgain"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_weight="1"
+                    android:text="Again"
+                    android:background="#FF0004"/>
+
+                <Button android:id="@+id/bGood"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:text="Good"
+                    android:background="#03F200"/>
+
+                <Button
+                    android:id="@+id/bEasy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_weight="1"
+                    android:text="Easy"
+                    android:background="#0579F8"/>
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+
+    </ViewFlipper>
+
+</LinearLayout>
