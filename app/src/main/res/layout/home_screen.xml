@@ -25,30 +25,22 @@
                     android:text="@string/Welcome2FlashVocab"/>
 
                 <Button
+                    android:id="@+id/bStudyVocab"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginTop="5dp"
                     android:layout_margin="10dp"
                     android:gravity="center"
                     android:textColor="#000000"
-<<<<<<< HEAD
-                    android:text="@string/studyvocabulary"
-=======
-                    android:text="@string/studyVocabulary"
->>>>>>> 34eb946ebc92adcd3a55a1fdafe616c6a02042a4
-                    android:id="@+id/bStudyVocab"/>
-
+                    android:text="@string/studyvocabulary"/>
                 <Button
+                    android:id="@+id/bSettings"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_margin="10dp"
                     android:gravity="center"
                     android:textColor="#000000"
-<<<<<<< HEAD
-                    android:text= "@string/action_settings"
-=======
-                    android:text= "@string/Settings"
->>>>>>> 34eb946ebc92adcd3a55a1fdafe616c6a02042a4
-                    android:id="@+id/bSettings"/>
+                    android:text= "@string/action_settings"/>
+
 
 </LinearLayout>

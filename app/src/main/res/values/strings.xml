@@ -1,12 +1,9 @@
 <resources>
     <string name="app_name">FlashVocab</string>
-<<<<<<< HEAD
     <string name="studyvocabulary">Study Vocabulary</string>
     <string name="action_settings">Settings</string>
-=======
     <string name="studyVocabulary">Study Vocabulary</string>
     <string name="Settings">Settings</string>
->>>>>>> 34eb946ebc92adcd3a55a1fdafe616c6a02042a4
     <string name="Welcome2FlashVocab">Welcome to FlashVocab</string>
     <string name="NoOfNewCardsDay">No. of New cards/day:\ </string>
     <string name="NoOfNewReviewDay">No. of New Review/day:\ </string>
