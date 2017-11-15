@@ -8,11 +8,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import com.bumptech.glide.Glide;
 import com.crashlytics.android.Crashlytics;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+
 
 import io.fabric.sdk.android.Fabric;
 
@@ -26,6 +26,7 @@ public class HomeScreen extends AppCompatActivity {
     ImageView imageView;
 
     public static int[] new_review_CardsIntArray;
+
     int[] Studied_XY;
     int[] Settings_XY;
 
@@ -41,27 +42,24 @@ public class HomeScreen extends AppCompatActivity {
         bStudyVocab = (Button) findViewById(R.id.bStudyVocab);
         bSettings = (Button) findViewById(R.id.bSettings);
 
-        //Glide.with(this).load("https://vergecampus.com/wp-content/uploads/2015/04/flashcards.png").into(imageView);
         imageView.setImageResource(R.drawable.flashvocab_pic);
 
         boolean isInserted = myDB.checkTable("VocabTable");
-        // Create VocabTable only if it does not exists
         if (!isInserted){
             text2SQLite();
         }
 
         isInserted = myDB.checkTable("Settings");
-        // Create Settings only if it does not exists
         if (!isInserted){
             myDB.createSetting();
         }
 
-        // Create ScheduledCards Table for the first time
+
         myDB.createScheduledCardsFirstTime();
 
-        // Getting Setting and no. of studied cards
         Studied_XY = readStudied_XY();
         Settings_XY = readSettings();
+
 
         bStudyVocab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,7 +67,7 @@ public class HomeScreen extends AppCompatActivity {
                 if (Settings_XY[0]<=Studied_XY[0] && Settings_XY[1]<=Studied_XY[1]){
                     showMessage("Congratulations!! You are all set for the day", "Today's review limit has been reached, but you can study more cards by increasing the daily limit in the settings.");
                 }else {
-                    myDB.createScheduledCardsLater();
+                    myDB.createScheduledCards_WordCard();
                     new_review_CardsIntArray = readSequenceScoreIntArray();
                     // If there's no cards scheduled the new_review_CardsIntArray length is 1
                     if (new_review_CardsIntArray.length == 1){
@@ -106,7 +104,7 @@ public class HomeScreen extends AppCompatActivity {
     // Here odd index are Card_Key and even index are its Schedule_Score
     // Then, it converts array of string to array of int[]
     public int[] readSequenceScoreIntArray(){
-        Cursor res = myDB.getSequenceScore();
+        Cursor res = myDB.getSequenceScore_WordCard();
 
         String sequenceScore;
         sequenceScore = "";
@@ -132,7 +130,7 @@ public class HomeScreen extends AppCompatActivity {
     // use xy[0] to get new cards and xy[1] to get review cards
     public int[] readStudied_XY(){
         int[] xy = new int[2];
-        Cursor res = myDB.getStudied_XY();
+        Cursor res = myDB.getStudied_WordCard();
 
         while (res.moveToNext()){
             xy[0] = res.getInt(0);
@@ -155,6 +153,7 @@ public class HomeScreen extends AppCompatActivity {
         return xy;
     }
 
+
     public void text2SQLite() {
         String data = "";
 
@@ -166,15 +165,15 @@ public class HomeScreen extends AppCompatActivity {
         if (is != null) {
             try {
                 int n = 1;
-                String antonym, card_key, card_type, example, meaning, pos, picture2_GCS_links, schedule_score, synonym, word, word_no;
+                String antonym, example, meaning, pos, picture2_GCS_links, score_MCQCard, score_TypeInCard, score_WordCard, synonym, word, word_no;
                 antonym = "";
-                card_key = "";
-                card_type = "";
                 example = "";
                 meaning = "";
                 pos = "";
                 picture2_GCS_links = "";
-                schedule_score = "";
+                score_MCQCard = "";
+                score_TypeInCard = "";
+                score_WordCard = "";
                 synonym = "";
                 word = "";
                 word_no = "";
@@ -185,25 +184,25 @@ public class HomeScreen extends AppCompatActivity {
                         antonym = data;
                     }
                     if (m == 2) {
-                        card_key = data;
-                    }
-                    if (m == 3) {
-                        card_type = data;
-                    }
-                    if (m == 4) {
                         example = data;
                     }
-                    if (m == 5) {
+                    if (m == 3) {
                         meaning = data;
                     }
-                    if (m == 6) {
+                    if (m == 4) {
                         pos = data;
                     }
-                    if (m == 7) {
+                    if (m == 5) {
                         picture2_GCS_links = data;
                     }
+                    if (m == 6) {
+                        score_MCQCard = data;
+                    }
+                    if (m == 7) {
+                        score_TypeInCard = data;
+                    }
                     if (m == 8) {
-                        schedule_score = data;
+                        score_WordCard = data;
                     }
                     if (m == 9) {
                         synonym = data;
@@ -214,8 +213,7 @@ public class HomeScreen extends AppCompatActivity {
                     if (m == 0) {
                         word_no = data;
 
-                        myDB.insertData(antonym, card_key, card_type, example, meaning, pos, picture2_GCS_links, schedule_score, synonym, word, word_no);
-
+                        myDB.insertData(antonym, example, meaning, pos, picture2_GCS_links, score_MCQCard, score_TypeInCard, score_WordCard, synonym, word, word_no);
                     }
                     n += 1;
                 }
