@@ -1,6 +1,5 @@
 package com.gtatiya.flashvocab;
 
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.speech.tts.TextToSpeech;
@@ -15,22 +14,22 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
-
 import com.bumptech.glide.Glide;
-
+import com.crashlytics.android.Crashlytics;
+import java.util.Arrays;
 import java.util.Locale;
+import io.fabric.sdk.android.Fabric;
+
 
 public class WordCard extends AppCompatActivity implements TextToSpeech.OnInitListener{
-
     DatabaseHelper myDB;
     ViewFlipper mViewFlipper;
     TextView tvWord, tvWord2, tvPOS, tvPOS2, tvMeaning, tvExample, tvSynonym, tvAntonym;
-    ImageView ivPic;
     Button bShowAns, bAgain, bGood, bEasy, bPlay;
 
     public static String word;
 
-    HomeScreen homeScreen;
+    HomeScreen homescreen;
 
     int[] SequenceScoreIntArray;
 
@@ -41,6 +40,7 @@ public class WordCard extends AppCompatActivity implements TextToSpeech.OnInitLi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Fabric.with(this, new Crashlytics());
         setContentView(R.layout.word_card);
 
         myDB = new DatabaseHelper(this);
@@ -63,7 +63,10 @@ public class WordCard extends AppCompatActivity implements TextToSpeech.OnInitLi
 
         engine = new TextToSpeech(this, this);
 
-        SequenceScoreIntArray = homeScreen.new_review_CardsIntArray;
+        SequenceScoreIntArray = homescreen.new_review_CardsIntArray;
+
+        System.out.println("Array of Integer: SequenceScoreIntArray");
+        System.out.println(Arrays.toString(SequenceScoreIntArray));
         viewCard(SequenceScoreIntArray[0]); // displaying the first card
 
         bShowAns.setOnClickListener(new View.OnClickListener() {
@@ -91,12 +94,12 @@ public class WordCard extends AppCompatActivity implements TextToSpeech.OnInitLi
                     mViewFlipper.setDisplayedChild(mViewFlipper.indexOfChild(findViewById(R.id.child_1)));
                 }
 
-                myDB.updateScoreAgain(SequenceScoreIntArray[indexOfSequenceScoreIntArray -2]); // updating score of previous card
+                myDB.updateScore_WordCardAgain(SequenceScoreIntArray[indexOfSequenceScoreIntArray -2]); // updating score of previous card
                 // incrementing studied new cards and review cards
                 if (SequenceScoreIntArray[indexOfSequenceScoreIntArray -1] == 0){
-                    myDB.increaseStudied_Xby1();
+                    myDB.increaseStudied_New_WordCard_by1();
                 } else{
-                    myDB.increaseStudied_Yby1();
+                    myDB.increaseStudied_Review_WordCard_by1();
                 }
 
             }
@@ -116,12 +119,12 @@ public class WordCard extends AppCompatActivity implements TextToSpeech.OnInitLi
                     AnimationFactory.flipTransition(mViewFlipper, AnimationFactory.FlipDirection.TOP_BOTTOM);
                     mViewFlipper.setDisplayedChild(mViewFlipper.indexOfChild(findViewById(R.id.child_1)));
                 }
-                myDB.updateScoreGood(SequenceScoreIntArray[indexOfSequenceScoreIntArray -2]); // updating score of previous card
+                myDB.updateScore_WordCardGood(SequenceScoreIntArray[indexOfSequenceScoreIntArray -2]); // updating score of previous card
                 // incrementing studied new cards and review cards
                 if (SequenceScoreIntArray[indexOfSequenceScoreIntArray -1] == 0){
-                    myDB.increaseStudied_Xby1();
+                    myDB.increaseStudied_New_WordCard_by1();
                 } else{
-                    myDB.increaseStudied_Yby1();
+                    myDB.increaseStudied_Review_WordCard_by1();
                 }
             }
         });
@@ -140,12 +143,12 @@ public class WordCard extends AppCompatActivity implements TextToSpeech.OnInitLi
                     AnimationFactory.flipTransition(mViewFlipper, AnimationFactory.FlipDirection.TOP_BOTTOM);
                     mViewFlipper.setDisplayedChild(mViewFlipper.indexOfChild(findViewById(R.id.child_1)));
                 }
-                myDB.updateScoreEasy(SequenceScoreIntArray[indexOfSequenceScoreIntArray -2]); // updating score of previous card
+                myDB.updateScore_WordCardEasy(SequenceScoreIntArray[indexOfSequenceScoreIntArray -2]); // updating score of previous card
                 // incrementing studied new cards and review cards
                 if (SequenceScoreIntArray[indexOfSequenceScoreIntArray -1] == 0){
-                    myDB.increaseStudied_Xby1();
+                    myDB.increaseStudied_New_WordCard_by1();
                 } else{
-                    myDB.increaseStudied_Yby1();
+                    myDB.increaseStudied_Review_WordCard_by1();
                 }
             }
         });
@@ -153,7 +156,7 @@ public class WordCard extends AppCompatActivity implements TextToSpeech.OnInitLi
         bPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                speakText(word);
+                speakText2(word);
             }
         });
 
@@ -175,46 +178,21 @@ public class WordCard extends AppCompatActivity implements TextToSpeech.OnInitLi
         if (id == R.id.action_undo) {
             // do something here
             if(indexOfSequenceScoreIntArray == 0){
-                Toast.makeText(WordCard.this, "Can't go back", Toast.LENGTH_LONG).show();
+                Toast.makeText(WordCard.this, "Can't go back to previous card; this is the first card", Toast.LENGTH_LONG).show();
             } else{
                 indexOfSequenceScoreIntArray -= 2;
                 viewCard(SequenceScoreIntArray[indexOfSequenceScoreIntArray]);
                 mViewFlipper.setDisplayedChild(mViewFlipper.indexOfChild(findViewById(R.id.child_1)));
-                myDB.undoScore(SequenceScoreIntArray[indexOfSequenceScoreIntArray], SequenceScoreIntArray[indexOfSequenceScoreIntArray +1]); // undo score
+                myDB.undoScore_WordCard(SequenceScoreIntArray[indexOfSequenceScoreIntArray], SequenceScoreIntArray[indexOfSequenceScoreIntArray +1]); // undo score
                 // undoing studied cards
                 if (SequenceScoreIntArray[indexOfSequenceScoreIntArray +1] == 0){
-                    myDB.decreaseStudied_Xby1();
+                    myDB.decreaseStudied_New_WordCard_by1();
                 } else{
-                    myDB.decreaseStudied_Yby1();
+                    myDB.decreaseStudied_Review_WordCard_by1();
                 }
             }
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void onInit(int i) {
-        if (i == TextToSpeech.SUCCESS) {
-            //Setting speech Language
-            engine.setLanguage(Locale.ENGLISH);
-            engine.setPitch(1);
-            speakText(word); // added only for the first word to fix: speak failed: not bound to TTS engine
-        }
-    }
-
-    @Override
-    public void onDestroy() {
-        // Don't forget to shutdown!
-        if (engine != null) {
-            engine.stop();
-            engine.shutdown();
-        }
-        super.onDestroy();
-    }
-
-
-    public void speakText(String textContents) {
-        engine.speak(textContents, TextToSpeech.QUEUE_ADD, null, null);
     }
 
     public void viewCard(int cardkey){
@@ -230,29 +208,24 @@ public class WordCard extends AppCompatActivity implements TextToSpeech.OnInitLi
             word = res.getString(4);
 
             System.out.println(word);
-
-            speakText(word);
-
+            speakText2(word);
             tvPOS.setText(res.getString(5));
             tvPOS2.setText(res.getString(5));
             tvMeaning.setText(res.getString(6));
             tvExample.setText(res.getString(7));
-
-            if (res.getString(8) != "[]"){
+            layout.removeAllViews();
+            if (!res.getString(8).equals("[]")){
                 String[] values1 = picList(res.getString(8));
 
-                layout.removeAllViews();
                 for(int i=0; i<values1.length; i++) {
                     ImageView image = new ImageView(this);
                     image.setLayoutParams(new android.view.ViewGroup.LayoutParams(400,400));
                     // Adds the view to the layout
-                    Glide.with(WordCard.this).load(values1[i]).into(image);
+                    Glide.with(WordCard.this).load(values1[i]).fitCenter().into(image);
 
                     layout.addView(image);
                 }
-//                Glide.with(Main2Activity.this).load(values1[0]).into(ivPic);
             }
-
             tvSynonym.setText(res.getString(9));
             tvAntonym.setText(res.getString(10));
         }
@@ -268,4 +241,30 @@ public class WordCard extends AppCompatActivity implements TextToSpeech.OnInitLi
         }
         return values1;
     }
+
+    @Override
+    public void onInit(int i) {
+        if (i == TextToSpeech.SUCCESS) {
+            //Setting speech Language
+            engine.setLanguage(Locale.ENGLISH);
+            engine.setPitch(1);
+            speakText2(word); // added only for the first word to fix: speak failed: not bound to TTS engine
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        // Don't forget to shutdown!
+        if (engine != null) {
+            engine.stop();
+            engine.shutdown();
+        }
+        super.onDestroy();
+    }
+
+
+    public void speakText2(String textContents) {
+        engine.speak(textContents, TextToSpeech.QUEUE_ADD, null, null);
+    }
+
 }

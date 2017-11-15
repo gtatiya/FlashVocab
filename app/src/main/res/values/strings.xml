@@ -1,19 +1,23 @@
 <resources>
     <string name="app_name">FlashVocab</string>
-    <string name="studyvocabulary">Study Vocabulary</string>
-    <string name="cardbrowser">Card Browser</string>
-    <string name="action_settings">Settings</string>
+    <string name="studyVocabulary">Study Vocabulary</string>
+    <string name="Settings">Settings</string>
     <string name="Welcome2FlashVocab">Welcome to FlashVocab</string>
+    <string name="NoOfNewCardsDay">No. of New cards/day:\ </string>
+    <string name="NoOfNewReviewDay">No. of New Review/day:\ </string>
 
     <string name="dots">..........</string>
-    <string name="Word">Word: </string>
-    <string name="POS">POS: </string>
-    <string name="Meaning">Meaning: </string>
-    <string name="Example">Example: </string>
-    <string name="Synonym">Synonym: </string>
-    <string name="Antonym">Antonym: </string>
+    <string name="Word">Word:\ </string>
+    <string name="POS">POS:\ </string>
+    <string name="Meaning">Meaning:\ </string>
+    <string name="Example">Example:\ </string>
+    <string name="Synonym">Synonym:\ </string>
+    <string name="Antonym">Antonym:\ </string>
 
-    <string name="NextCard">Next Card</string>
-
+    <string name="ShowAnswer">Show Answer</string>
+    <string name="Again">Again</string>
+    <string name="Good">Good</string>
+    <string name="Easy">Easy</string>
+    <string name="Submit">Submit</string>
 
 </resources>
