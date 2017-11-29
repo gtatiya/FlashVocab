@@ -65,6 +65,8 @@ public class WordCard extends AppCompatActivity implements TextToSpeech.OnInitLi
 
         SequenceScoreIntArray = homescreen.new_review_CardsIntArray;
 
+        SequenceScoreIntArray = new int[]{1162, 0, 978, 0, 1144, 0, 715, 0, 1045, 0, 1043, 0, 1042, 0, 938, 0, 850, 0};
+
         System.out.println("Array of Integer: SequenceScoreIntArray");
         System.out.println(Arrays.toString(SequenceScoreIntArray));
         viewCard(SequenceScoreIntArray[0]); // displaying the first card

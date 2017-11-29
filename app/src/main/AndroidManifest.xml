@@ -20,7 +20,7 @@
 
         <meta-data
             android:name="io.fabric.ApiKey"
-            android:value="53764c6e43da354979dd83ea8a66b960f5286efa" />
+            android:value="API KEY" />
 
         <activity android:name=".WordCard" />
         <activity android:name=".Settings"></activity>

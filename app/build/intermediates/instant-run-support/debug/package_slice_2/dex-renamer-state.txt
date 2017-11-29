@@ -1,4 +1,4 @@
-#Wed Nov 15 09:17:52 EST 2017
+#Sat Nov 18 10:43:09 EST 2017
 base.0=C\:\\FlashVocab\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\21
 renamed.0=classes.dex
 file.0=C\:\\FlashVocab\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\21\\classes.dex

@@ -42,7 +42,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="Tahoma"
             android:textColor="#000000"
-            android:text="@string/NoOfNewReviewDay"/>
+            android:text="@string/NoOfReviewCardsDay"/>
 
         <EditText
             android:id="@+id/etNoReviewCards"

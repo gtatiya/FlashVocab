@@ -6,7 +6,7 @@
     <string name="Settings">Settings</string>
     <string name="Welcome2FlashVocab">Welcome to FlashVocab</string>
     <string name="NoOfNewCardsDay">No. of New cards/day:\ </string>
-    <string name="NoOfNewReviewDay">No. of New Review/day:\ </string>
+    <string name="NoOfReviewCardsDay">No. of Review cards/day:\ </string>
 
     <string name="dots">..........</string>
     <string name="Word">Word:\ </string>
