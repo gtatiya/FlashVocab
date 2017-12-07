@@ -19,11 +19,11 @@
             android:layout_height="wrap_content"
             android:fontFamily="Tahoma"
             android:textColor="#000000"
-            android:text="@string/NoOfNewCardsDay"/>
+            android:text="@string/NoOfNewCardsDayWordCard"/>
 
         <EditText
-            android:id="@+id/etNoNewCards"
-            android:labelFor="@+id/etNoNewCards"
+            android:id="@+id/etNoNewCards_WordCard"
+            android:labelFor="@+id/etNoNewCards_WordCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="#000"
@@ -42,11 +42,57 @@
             android:layout_height="wrap_content"
             android:fontFamily="Tahoma"
             android:textColor="#000000"
-            android:text="@string/NoOfReviewCardsDay"/>
+            android:text="@string/NoOfReviewCardsDayWordCard"/>
 
         <EditText
-            android:id="@+id/etNoReviewCards"
-            android:labelFor="@+id/etNoReviewCards"
+            android:id="@+id/etNoReviewCards_WordCard"
+            android:labelFor="@+id/etNoReviewCards_WordCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:inputType="number"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/child_3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="Tahoma"
+            android:textColor="#000000"
+            android:text="@string/NoOfNewCardsDayMCQCard"/>
+
+        <EditText
+            android:id="@+id/etNoNewCards_MCQCard"
+            android:labelFor="@+id/etNoNewCards_MCQCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:inputType="number"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/child_4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="Tahoma"
+            android:textColor="#000000"
+            android:text="@string/NoOfReviewCardsDayMCQCard"/>
+
+        <EditText
+            android:id="@+id/etNoReviewCards_MCQCard"
+            android:labelFor="@+id/etNoReviewCards_MCQCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="#000"

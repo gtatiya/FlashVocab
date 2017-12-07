@@ -16,7 +16,10 @@ import android.widget.Toast;
 import android.widget.ViewFlipper;
 import com.bumptech.glide.Glide;
 import com.crashlytics.android.Crashlytics;
+
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Locale;
 import io.fabric.sdk.android.Fabric;
 
@@ -63,9 +66,10 @@ public class WordCard extends AppCompatActivity implements TextToSpeech.OnInitLi
 
         engine = new TextToSpeech(this, this);
 
-        SequenceScoreIntArray = homescreen.new_review_CardsIntArray;
+        SequenceScoreIntArray = repeatNewCards(homescreen.new_review_CardsIntArray_WordCard);
 
-        SequenceScoreIntArray = new int[]{1162, 0, 978, 0, 1144, 0, 715, 0, 1045, 0, 1043, 0, 1042, 0, 938, 0, 850, 0};
+//        SequenceScoreIntArray = new int[]{1162, 0, 978, 0, 1144, 0, 715, 0, 1045, 0, 1043, 0, 1042, 0, 938, 0, 850, 0};
+
 
         System.out.println("Array of Integer: SequenceScoreIntArray");
         System.out.println(Arrays.toString(SequenceScoreIntArray));
@@ -242,6 +246,32 @@ public class WordCard extends AppCompatActivity implements TextToSpeech.OnInitLi
             values1[i] = values1[i].replaceAll("^\\s+",""); // strip the first whitespace
         }
         return values1;
+    }
+
+    // This function repeats or places new cards at the end
+    public int[] repeatNewCards(int[] new_review_CardsIntArray){
+
+        // convert int[] into List<Integer>
+        List<Integer> intList = new ArrayList<Integer>();
+        for (int index = 0; index < new_review_CardsIntArray.length; index++)
+        {
+            intList.add(new_review_CardsIntArray[index]);
+        }
+
+        for (int i = 1; i < new_review_CardsIntArray.length; i = i+2){
+            if(new_review_CardsIntArray[i] == 0){
+                intList.add(new_review_CardsIntArray[i-1]); //card key
+                intList.add(new_review_CardsIntArray[i]); //card score
+            }
+        }
+
+        // convert List<Integer> to int[]
+        int[] ret = new int[intList.size()];
+        int i = 0;
+        for (Integer e : intList){
+            ret[i++] = e;
+        }
+        return ret;
     }
 
     @Override

@@ -22,13 +22,16 @@ import io.fabric.sdk.android.Fabric;
 
 public class HomeScreen extends AppCompatActivity {
     DatabaseHelper myDB;
-    Button bStudyVocab, bSettings;
+    Button bStudyVocab, bStudyMCQ, bSettings;
     ImageView imageView;
 
-    public static int[] new_review_CardsIntArray;
+    public static int[] new_review_CardsIntArray_WordCard;
+    public static int[] new_review_CardsIntArray_MCQCard;
 
-    int[] Studied_XY;
-    int[] Settings_XY;
+    int[] Studied_XY_WordCard;
+    int[] Settings_XY_WordCard;
+    int[] Studied_XY_MCQCard;
+    int[] Settings_XY_MCQCard;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +43,7 @@ public class HomeScreen extends AppCompatActivity {
         myDB = new DatabaseHelper(this);
 
         bStudyVocab = (Button) findViewById(R.id.bStudyVocab);
+        bStudyMCQ = (Button) findViewById(R.id.bStudyMCQ);
         bSettings = (Button) findViewById(R.id.bSettings);
 
         imageView.setImageResource(R.drawable.flashvocab_pic);
@@ -57,23 +61,44 @@ public class HomeScreen extends AppCompatActivity {
 
         myDB.createScheduledCardsFirstTime();
 
-        Studied_XY = readStudied_XY();
-        Settings_XY = readSettings();
+        Studied_XY_WordCard = readStudied_XY_WordCard();
+        Settings_XY_WordCard = readSettings_WordCard();
+        Studied_XY_MCQCard = readStudied_XY_MCQCard();
+        Settings_XY_MCQCard = readSettings_MCQCard();
 
 
         bStudyVocab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (Settings_XY[0]<=Studied_XY[0] && Settings_XY[1]<=Studied_XY[1]){
+                if (Settings_XY_WordCard[0]<= Studied_XY_WordCard[0] && Settings_XY_WordCard[1]<= Studied_XY_WordCard[1]){
                     showMessage("Congratulations!! You are all set for the day", "Today's review limit has been reached, but you can study more cards by increasing the daily limit in the settings.");
                 }else {
                     myDB.createScheduledCards_WordCard();
-                    new_review_CardsIntArray = readSequenceScoreIntArray();
-                    // If there's no cards scheduled the new_review_CardsIntArray length is 1
-                    if (new_review_CardsIntArray.length == 1){
+                    new_review_CardsIntArray_WordCard = readSequenceScoreIntArray_WordCard();
+                    // If there's no cards scheduled the new_review_CardsIntArray_WordCard length is 1
+                    if (new_review_CardsIntArray_WordCard.length == 1){
                         showMessage("Congratulations!! You are all set for the day", "Today's review limit has been reached, but you can study more cards by increasing the daily limit in the settings.");
                     }else{
                         Intent i = new Intent(HomeScreen.this, WordCard.class);
+                        startActivity(i);
+                    }
+                }
+            }
+        });
+
+        bStudyMCQ.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (Settings_XY_MCQCard[0]<= Studied_XY_MCQCard[0] && Settings_XY_MCQCard[1]<= Studied_XY_MCQCard[1]){
+                    showMessage("Congratulations!! You are all set for the day", "Today's review limit has been reached, but you can study more cards by increasing the daily limit in the settings.");
+                }else {
+                    myDB.createScheduledCards_MCQCard();
+                    new_review_CardsIntArray_MCQCard = readSequenceScoreIntArray_MCQCard();
+                    // If there's no cards scheduled the new_review_CardsIntArray_WordCard length is 1
+                    if (new_review_CardsIntArray_MCQCard.length == 1){
+                        showMessage("Congratulations!! You are all set for the day", "Today's review limit has been reached, but you can study more cards by increasing the daily limit in the settings.");
+                    }else{
+                        Intent i = new Intent(HomeScreen.this, MCQCard.class);
                         startActivity(i);
                     }
                 }
@@ -103,8 +128,34 @@ public class HomeScreen extends AppCompatActivity {
     // Storing new and review cards in String of format "1,0,7,0,13,68,4,420"
     // Here odd index are Card_Key and even index are its Schedule_Score
     // Then, it converts array of string to array of int[]
-    public int[] readSequenceScoreIntArray(){
+    public int[] readSequenceScoreIntArray_WordCard(){
         Cursor res = myDB.getSequenceScore_WordCard();
+
+        String sequenceScore;
+        sequenceScore = "";
+        while (res.moveToNext()){
+            sequenceScore = res.getString(0);
+        }
+        String[] sequenceScoreArray = sequenceScore.split(",");
+
+        // converting array of string to array of int
+        int[] i2 = new int[sequenceScoreArray.length];
+        if (sequenceScore.equals("")){
+            return i2;
+        }else{
+            for (int i = 0; i < sequenceScoreArray.length; i++) {
+                i2[i] = Integer.parseInt(sequenceScoreArray[i]);
+            }
+            return i2;
+        }
+    }
+
+    // Reading today's scheduled cards and scores from Database
+    // Storing new and review cards in String of format "1,0,7,0,13,68,4,420"
+    // Here odd index are Card_Key and even index are its Schedule_Score
+    // Then, it converts array of string to array of int[]
+    public int[] readSequenceScoreIntArray_MCQCard(){
+        Cursor res = myDB.getSequenceScore_MCQCard();
 
         String sequenceScore;
         sequenceScore = "";
@@ -128,7 +179,7 @@ public class HomeScreen extends AppCompatActivity {
     // This function will read today's studies new and review cards
     // Store it in array of integer xy
     // use xy[0] to get new cards and xy[1] to get review cards
-    public int[] readStudied_XY(){
+    public int[] readStudied_XY_WordCard(){
         int[] xy = new int[2];
         Cursor res = myDB.getStudied_WordCard();
 
@@ -142,13 +193,41 @@ public class HomeScreen extends AppCompatActivity {
     // This function will read settings: no. of new and review cards
     // Store it in array of integer xy
     // use xy[0] to get new cards and xy[1] to get review cards
-    public int[] readSettings(){
+    public int[] readSettings_WordCard(){
         int[] xy = new int[2];
         Cursor res = myDB.getSettings();
 
         while (res.moveToNext()){
             xy[0] = res.getInt(1);
             xy[1] = res.getInt(2);
+        }
+        return xy;
+    }
+
+    // This function will read today's studies new and review cards
+    // Store it in array of integer xy
+    // use xy[0] to get new cards and xy[1] to get review cards
+    public int[] readStudied_XY_MCQCard(){
+        int[] xy = new int[2];
+        Cursor res = myDB.getStudied_MCQCard();
+
+        while (res.moveToNext()){
+            xy[0] = res.getInt(0);
+            xy[1] = res.getInt(1);
+        }
+        return xy;
+    }
+
+    // This function will read settings: no. of new and review cards
+    // Store it in array of integer xy
+    // use xy[0] to get new cards and xy[1] to get review cards
+    public int[] readSettings_MCQCard(){
+        int[] xy = new int[2];
+        Cursor res = myDB.getSettings();
+
+        while (res.moveToNext()){
+            xy[0] = res.getInt(3);
+            xy[1] = res.getInt(4);
         }
         return xy;
     }

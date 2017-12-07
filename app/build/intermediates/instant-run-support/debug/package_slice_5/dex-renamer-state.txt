@@ -1,4 +1,4 @@
-#Sat Nov 18 10:43:10 EST 2017
-base.0=C\:\\FlashVocab\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\24
+#Wed Dec 06 21:07:06 EST 2017
+base.0=C\:\\FlashVocab\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\6
+path.0=classes.dex
 renamed.0=classes.dex
-file.0=C\:\\FlashVocab\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\24\\classes.dex

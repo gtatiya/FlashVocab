@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="23"
+        android:minSdkVersion="22"
         android:targetSdkVersion="25" />
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -30,6 +30,7 @@
 
         <activity android:name="com.gtatiya.flashvocab.WordCard" />
         <activity android:name="com.gtatiya.flashvocab.Settings" />
+        <activity android:name="com.gtatiya.flashvocab.MCQCard" />
 
         <meta-data
             android:name="android.support.VERSION"

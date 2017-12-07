@@ -11,7 +11,7 @@ import android.widget.EditText;
 public class Settings extends AppCompatActivity {
     Button bSubmit;
     DatabaseHelper myDB;
-    EditText etNoNewCards, etNoReviewCards;
+    EditText etNoNewCards_WordCard, etNoReviewCards_WordCard, etNoNewCards_MCQCard, etNoReviewCards_MCQCard;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,33 +20,55 @@ public class Settings extends AppCompatActivity {
 
         bSubmit = (Button) findViewById(R.id.bSubmit);
         myDB = new DatabaseHelper(this);
-        etNoNewCards = (EditText) findViewById(R.id.etNoNewCards);
-        etNoReviewCards = (EditText) findViewById(R.id.etNoReviewCards);
+        etNoNewCards_WordCard = (EditText) findViewById(R.id.etNoNewCards_WordCard);
+        etNoReviewCards_WordCard = (EditText) findViewById(R.id.etNoReviewCards_WordCard);
+        etNoNewCards_MCQCard = (EditText) findViewById(R.id.etNoNewCards_MCQCard);
+        etNoReviewCards_MCQCard = (EditText) findViewById(R.id.etNoReviewCards_MCQCard);
 
         readSettings();
 
         bSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int n1, n2;
-                n1 = 0;
-                n2 = 0;
+                int newWordCards, reviewWordCards, newMCQCards, reviewMCQCards;
+                newWordCards = 0;
+                reviewWordCards = 0;
+                newMCQCards = 0;
+                reviewMCQCards = 0;
 
+                // Word Cards
                 try {
-                    n1 =  Integer.parseInt(etNoNewCards.getText().toString());
+                    newWordCards =  Integer.parseInt(etNoNewCards_WordCard.getText().toString());
                 } catch (NumberFormatException e) {
                     // log and do something else like notify the user or set i to a default value
-                    etNoNewCards.setText("0");
+                    etNoNewCards_WordCard.setText("0");
                 }
 
                 try {
-                    n2 = Integer.parseInt(etNoReviewCards.getText().toString());
+                    reviewWordCards = Integer.parseInt(etNoReviewCards_WordCard.getText().toString());
                 } catch (NumberFormatException e) {
                     // log and do something else like notify the user or set i to a default value
-                    etNoReviewCards.setText("0");
+                    etNoReviewCards_WordCard.setText("0");
                 }
 
-                myDB.updateSettings(n1, n2);
+                // MCQ Cards
+                try {
+                    newMCQCards =  Integer.parseInt(etNoNewCards_MCQCard.getText().toString());
+                } catch (NumberFormatException e) {
+                    // log and do something else like notify the user or set i to a default value
+                    etNoNewCards_MCQCard.setText("0");
+                }
+
+                try {
+                    reviewMCQCards = Integer.parseInt(etNoReviewCards_MCQCard.getText().toString());
+                } catch (NumberFormatException e) {
+                    // log and do something else like notify the user or set i to a default value
+                    etNoReviewCards_MCQCard.setText("0");
+                }
+
+                myDB.updateSettings_WordCard(newWordCards, reviewWordCards);
+                myDB.updateSettings_MCQCard(newMCQCards, reviewMCQCards);
+
                 Intent i=new Intent(Settings.this, HomeScreen.class);
                 startActivity(i);
             }
@@ -60,8 +82,10 @@ public class Settings extends AppCompatActivity {
         }
 
         while (res.moveToNext()){
-            etNoNewCards.setText(res.getString(1));
-            etNoReviewCards.setText(res.getString(2));
+            etNoNewCards_WordCard.setText(res.getString(1));
+            etNoReviewCards_WordCard.setText(res.getString(2));
+            etNoNewCards_MCQCard.setText(res.getString(3));
+            etNoReviewCards_MCQCard.setText(res.getString(4));
         }
     }
 }

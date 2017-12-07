@@ -1,12 +1,14 @@
 <resources>
     <string name="app_name">FlashVocab</string>
-    <string name="studyvocabulary">Study Vocabulary</string>
-    <string name="action_settings">Settings</string>
     <string name="studyVocabulary">Study Vocabulary</string>
+    <string name="studyMCQCards">Study MCQ Cards</string>
+    <string name="action_settings">Settings</string>
     <string name="Settings">Settings</string>
     <string name="Welcome2FlashVocab">Welcome to FlashVocab</string>
-    <string name="NoOfNewCardsDay">No. of New cards/day:\ </string>
-    <string name="NoOfReviewCardsDay">No. of Review cards/day:\ </string>
+    <string name="NoOfNewCardsDayWordCard">No. of New cards/day:\ </string>
+    <string name="NoOfReviewCardsDayWordCard">No. of Review cards/day:\ </string>
+    <string name="NoOfNewCardsDayMCQCard">No. of New MCQ cards/day:\ </string>
+    <string name="NoOfReviewCardsDayMCQCard">No. of Review MCQ cards/day:\ </string>
 
     <string name="dots">..........</string>
     <string name="Word">Word:\ </string>
@@ -15,6 +17,8 @@
     <string name="Example">Example:\ </string>
     <string name="Synonym">Synonym:\ </string>
     <string name="Antonym">Antonym:\ </string>
+
+    <string name="SelectCorrectWord">Select Correct Word:\ </string>
 
     <string name="ShowAnswer">Show Answer</string>
     <string name="Again">Again</string>

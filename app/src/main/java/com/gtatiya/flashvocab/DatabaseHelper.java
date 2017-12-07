@@ -30,8 +30,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public static final String TABLE_NAME2 = "Settings";
     public static final String COL_1_2 = "Setting_Key";
-    public static final String COL_2_2 = "No_New_cards";
-    public static final String COL_3_2 = "No_Review_Cards";
+    public static final String COL_2_2 = "No_New_cards_WordCard";
+    public static final String COL_3_2 = "No_Review_Cards_WordCard";
+    public static final String COL_4_2 = "No_New_cards_MCQCard";
+    public static final String COL_5_2 = "No_Review_Cards_MCQCard";
+    public static final String COL_6_2 = "No_New_cards_TypeInCard";
+    public static final String COL_7_2 = "No_Review_Cards_TypeInCard";
 
     public static final String TABLE_NAME3 = "ScheduledCards";
     public static final String COL_1_3 = "Date_Key";
@@ -108,6 +112,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return res;
     }
 
+    // VocabTable Table - Word Card
     public void updateScore_WordCardAgain(int Word_No){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -154,8 +159,71 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.update(TABLE_NAME, cv, "Word_No = "+Word_No, null);
     }
 
+    // VocabTable Table - MCQ Card
+    public void updateScore_MCQCardAgain(int Word_No){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+        cv.put(COL_2, 0); // setting score to 0
+
+        db.update(TABLE_NAME, cv, "Word_No = "+Word_No, null);
+    }
+
+    public void updateScore_MCQCardGood(int Word_No){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+        Cursor res = db.rawQuery("SELECT score_WordCard FROM "+TABLE_NAME+" WHERE Word_No = "+Word_No, null);
+        res.moveToFirst();
+        int newScore = res.getInt(0)+1;
+
+        cv.put(COL_2, newScore); // increasing score by 1
+
+        db.update(TABLE_NAME, cv, "Word_No = "+Word_No, null);
+        res.close();
+    }
+
+    public void updateScore_MCQCardEasy(int Word_No){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+        Cursor res = db.rawQuery("SELECT score_WordCard FROM "+TABLE_NAME+" WHERE Word_No = "+Word_No, null);
+        res.moveToFirst();
+        int newScore = res.getInt(0)+2;
+
+        cv.put(COL_2, newScore); // increasing score by 2
+
+        db.update(TABLE_NAME, cv, "Word_No = "+Word_No, null);
+        res.close();
+    }
+
+    public void undoScore_MCQCard(int Word_No, int lastScore){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+        cv.put(COL_2, lastScore);
+
+        db.update(TABLE_NAME, cv, "Word_No = "+Word_No, null);
+    }
+
     // Settings Table
-    public void updateSettings(int noNewCards, int noReviewCards){
+    public void createSetting(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE_NAME2 +" (Setting_Key INTEGER PRIMARY KEY, No_New_cards_WordCard INTEGER, No_Review_Cards_WordCard INTEGER, No_New_cards_MCQCard INTEGER, No_Review_Cards_MCQCard INTEGER, No_New_cards_TypeInCard INTEGER, No_Review_Cards_TypeInCard INTEGER);");
+
+        ContentValues cv = new ContentValues();
+        cv.put(COL_1_2, 1); // key will always be 1
+        cv.put(COL_2_2, 10); // default value
+        cv.put(COL_3_2, 15); // default value
+        cv.put(COL_4_2, 10); // default value
+        cv.put(COL_5_2, 15); // default value
+        cv.put(COL_6_2, 10); // default value
+        cv.put(COL_7_2, 15); // default value
+
+        db.insert(TABLE_NAME2, null, cv);
+    }
+
+    public void updateSettings_WordCard(int noNewCards, int noReviewCards){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(COL_2_2, noNewCards); //These Fields should be your String values of actual column names
@@ -164,22 +232,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.update(TABLE_NAME2, cv, "Setting_Key = 1", null);
     }
 
+    public void updateSettings_MCQCard(int noNewCards, int noReviewCards){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(COL_4_2, noNewCards); //These Fields should be your String values of actual column names
+        cv.put(COL_5_2, noReviewCards);
+
+        db.update(TABLE_NAME2, cv, "Setting_Key = 1", null);
+    }
+
     public Cursor getSettings(){
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor res = db.rawQuery("SELECT * FROM "+TABLE_NAME2+" WHERE Setting_Key = 1", null);
         return res;
-    }
-
-    public void createSetting(){
-        SQLiteDatabase db = this.getWritableDatabase();
-        db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE_NAME2 +" (Setting_Key INTEGER PRIMARY KEY, No_New_cards INTEGER, No_Review_Cards INTEGER);");
-
-        ContentValues cv = new ContentValues();
-        cv.put(COL_1_2, 1); // key will always be 1
-        cv.put(COL_2_2, 10); // default value
-        cv.put(COL_3_2, 15); // default value
-
-        db.insert(TABLE_NAME2, null, cv);
     }
 
     // ScheduledCards Table
@@ -213,6 +278,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
     }
 
+    // ScheduledCards Table - WordCard
     public void createScheduledCards_WordCard(){
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -357,4 +423,159 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.update(TABLE_NAME3, cv, "Date_Key = '"+newDate+"'", null);
         res.close();
     }
+
+    // ScheduledCards Table - MCQ
+    public void createScheduledCards_MCQCard(){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Date date = new Date();
+        String newDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(date);
+
+        ContentValues cv = new ContentValues();
+        Cursor cursor = getSettings();
+        cursor.moveToFirst();
+        int x = cursor.getInt(3);
+        int y = cursor.getInt(4);
+
+        cursor = db.rawQuery("SELECT Studied_New_MCQCard, Studied_Review_MCQCard, Selected_New_MCQCard, Selected_Review_MCQCard FROM "+TABLE_NAME3+" WHERE Date_Key = '"+newDate+"'", null);
+        int Studied_New_MCQCard, Studied_Review_MCQCard;
+        String Selected_New_MCQCard, Selected_Review_MCQCard;
+        cursor.moveToNext();
+        Studied_New_MCQCard = cursor.getInt(0);
+        Studied_Review_MCQCard = cursor.getInt(1);
+        Selected_New_MCQCard = cursor.getString(2);
+        Selected_Review_MCQCard = cursor.getString(3);
+
+        int newX = Math.max(0, x - Studied_New_MCQCard); // changes negative number to 0
+        int newY = Math.max(0, y - Studied_Review_MCQCard); // changes negative number to 0
+
+        // Selecting New Cards
+        cursor  = db.rawQuery("SELECT Word_No, score_MCQCard FROM "+TABLE_NAME+" WHERE score_MCQCard = 0 ORDER BY Word_No LIMIT "+newX, null);
+        String SequenceScore_MCQCard, excludeKeys;
+        SequenceScore_MCQCard = "";
+        excludeKeys="";
+        while (cursor.moveToNext()){
+            SequenceScore_MCQCard += cursor.getString(0)+","+cursor.getString(1)+",";
+            Selected_New_MCQCard += "'"+cursor.getString(0)+"',";
+        }
+
+        if (Selected_New_MCQCard.length() == 0){
+            if (Selected_Review_MCQCard.length()>0){
+                excludeKeys = Selected_Review_MCQCard.substring(0, Selected_Review_MCQCard.length() - 1); // removing last ","
+            }
+        }else if(Selected_Review_MCQCard.length() == 0){
+            if (Selected_New_MCQCard.length()>0){
+                excludeKeys = Selected_New_MCQCard.substring(0, Selected_New_MCQCard.length() - 1); // removing last ","
+            }
+        }else{
+            excludeKeys = Selected_New_MCQCard + Selected_Review_MCQCard.substring(0, Selected_Review_MCQCard.length() - 1);
+        }
+
+        // Selecting Review Cards except New cards selected today
+        // It will not select review cards that has been selected today again - might happen if review card limit has not been reached
+        cursor  = db.rawQuery("SELECT Word_No, score_MCQCard FROM "+TABLE_NAME+" WHERE score_MCQCard > 0 EXCEPT SELECT Word_No, score_MCQCard FROM "+TABLE_NAME+" WHERE Word_No IN ("+excludeKeys+") ORDER BY score_MCQCard LIMIT "+newY, null);
+        while (cursor.moveToNext()){
+            SequenceScore_MCQCard += cursor.getString(0)+","+cursor.getString(1)+",";
+            Selected_Review_MCQCard += "'"+cursor.getString(0)+"',";
+        }
+        if (SequenceScore_MCQCard.length()>0){
+            SequenceScore_MCQCard = SequenceScore_MCQCard.substring(0, SequenceScore_MCQCard.length() - 1); // removing last ","
+        }
+
+        cv.put(COL_7_3, SequenceScore_MCQCard);
+        cv.put(COL_9_3, Selected_New_MCQCard);
+        cv.put(COL_11_3, Selected_Review_MCQCard);
+
+        db.update(TABLE_NAME3, cv, "Date_Key = '"+newDate+"'", null);
+        cursor.close();
+    }
+
+    public Cursor getSequenceScore_MCQCard(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Date date = new Date();
+        String newDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(date);
+        Cursor res = db.rawQuery("SELECT SequenceScore_MCQCard FROM "+TABLE_NAME3+" WHERE Date_Key = '"+newDate+"'", null);
+        return res;
+    }
+
+    public Cursor getStudied_MCQCard(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Date date = new Date();
+        String newDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(date);
+        Cursor res = db.rawQuery("SELECT Studied_New_MCQCard, Studied_Review_MCQCard FROM "+TABLE_NAME3+" WHERE Date_Key = '"+newDate+"'", null);
+        return res;
+    }
+
+    public void increaseStudied_New_MCQCard_by1(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        Date date = new Date();
+        String newDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(date);
+
+        Cursor res = db.rawQuery("SELECT Studied_New_MCQCard FROM "+TABLE_NAME3+" WHERE Date_Key = '"+newDate+"'", null);
+        res.moveToFirst();
+        int newStudied_X = res.getInt(0)+1;
+
+        cv.put(COL_8_3, newStudied_X); // increasing score by 1
+
+        db.update(TABLE_NAME3, cv, "Date_Key = '"+newDate+"'", null);
+        res.close();
+    }
+
+    public void increaseStudied_Review_MCQCard_by1(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        Date date = new Date();
+        String newDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(date);
+
+        Cursor res = db.rawQuery("SELECT Studied_Review_MCQCard FROM "+TABLE_NAME3+" WHERE Date_Key = '"+newDate+"'", null);
+        res.moveToFirst();
+        int newStudied_Y = res.getInt(0)+1;
+
+        cv.put(COL_10_3, newStudied_Y); // increasing score by 1
+
+        db.update(TABLE_NAME3, cv, "Date_Key = '"+newDate+"'", null);
+        res.close();
+    }
+
+    public void decreaseStudied_New_MCQCard_by1(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        Date date = new Date();
+        String newDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(date);
+
+        Cursor res = db.rawQuery("SELECT Studied_New_MCQCard FROM "+TABLE_NAME3+" WHERE Date_Key = '"+newDate+"'", null);
+        res.moveToFirst();
+        int newStudied_X = res.getInt(0)-1;
+
+        cv.put(COL_8_3, newStudied_X); // increasing score by 1
+
+        db.update(TABLE_NAME3, cv, "Date_Key = '"+newDate+"'", null);
+        res.close();
+    }
+
+    public void decreaseStudied_Review_MCQCard_by1(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        Date date = new Date();
+        String newDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(date);
+
+        Cursor res = db.rawQuery("SELECT Studied_Review_MCQCard FROM "+TABLE_NAME3+" WHERE Date_Key = '"+newDate+"'", null);
+        res.moveToFirst();
+        int newStudied_Y = res.getInt(0)-1;
+
+        cv.put(COL_10_3, newStudied_Y); // increasing score by 1
+
+        db.update(TABLE_NAME3, cv, "Date_Key = '"+newDate+"'", null);
+        res.close();
+    }
+
+    // Randomly select 3 words except the word provided in the argument
+    public Cursor get3options_MCQCard(String word){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("SELECT Word FROM "+TABLE_NAME+" WHERE Word != '"+word+"' ORDER BY RANDOM() LIMIT 3", null);
+        return res;
+    }
+
+
 }
