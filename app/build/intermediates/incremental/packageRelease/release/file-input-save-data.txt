@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Wed Dec 06 21:20:24 EST 2017
+#Thu Dec 07 09:15:17 EST 2017
 1.base=C\:\\FlashVocab\\app\\build\\intermediates\\transforms\\dex\\release\\0
 0.baseType=DIRECTORY
 1.baseType=DIRECTORY

@@ -5,6 +5,7 @@ FlashVocab is a virtual flashcard application. It is designed for users who want
 * 1000 Most Common GRE Words
 * Meaning, example, pronunciation, picture, synonyms, antonyms for every word
 * Displays cards based on user's performance
+* Test what you have learned by MCQ cards
 
 # Install
 
